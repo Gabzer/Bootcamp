@@ -244,3 +244,15 @@ _body_: corpo da requisicao (postar dados codificados em json, por exemplo).
 
 async = retorna sempre uma promise.
 await = qdo temos uma chamada que retorna uma promise, a gente usa o await que ja vai retornar o resultado da promise.
+
+
+
+
+# Tarefas temporizadas ou periodicas em JavaScript
+
+setTimeout(function, delay);
+clearTimeout(return_do_setTimeout); -> pode servir para cancelar o setTimeout.
+
+setInterval(function, delay) -> agenda uma tarefa para ser feita repetidamente em um intervalo de tempo.
+
+requestAnimationFrame(function) -> executa animacoes ou outra tarefa que deve ser feita com a taxa de atualizacao da tela.

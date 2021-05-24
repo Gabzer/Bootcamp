@@ -1,39 +1,44 @@
-function fetchJson(url) {
-    return fetch(url).then((r) => {
+function fetchJson(url, options) {
+    return fetch(url, options).then((r) => {
         if (r.ok) {
             return r.json();
         } else {
             throw new Error(r.statusText);
         }
+    }).catch(error => {
+        showError("Error loading data", error);
+        throw error;
     });
 }
 
+const baseUrl = "http://localhost:3000";
+
 function listEmployees() {
-    return fetchJson("http://localhost:3000/employees");
+    return fetchJson(`${baseUrl}/employees`);
 }
 
 function listRoles() {
-    return fetchJson("http://localhost:3000/roles");
+    return fetchJson(`${baseUrl}/roles`);
 }
 
+function updateEmployee(id, employee) {
+    return fetchJson(`${baseUrl}/employees/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(employee),
+    });
+}
 
-/*
-// Criar
-fetch(`http://localhost:3000/employees`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(employee),
-});
+function createEmployee(employee) {
+    return fetchJson(`${baseUrl}/employees`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(employee)
+    });
+}
 
-// Atualizar
-fetch(`http://localhost:3000/employees/${id}`, {
-  method: "PUT",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(employee),
-});
-
-// Excluir
-fetch(`http://localhost:3000/employees/${id}`, {
-  method: "DELETE",
-});
-*/
+function deleteEmployee(id) {
+    return fetchJson(`${baseUrl}/employees/${id}`, {
+      method: "DELETE"
+    });
+}
