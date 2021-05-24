@@ -146,7 +146,7 @@ Beneficios do IIFE:
 
 Conceito de meta programacao
 
-![](proxy.png)
+![](./proxy.png)
 
 A biblioteca Reflect ajuda na manipulacao do proxy.
 
