@@ -189,3 +189,133 @@ interface Iterator {
 ```
 
 Uma lista sem ser iterada dah problema em um FOR-OF.
+
+
+
+# Aula Interativa 1
+
+(() => {})() -> para a primeira chamada = FUNCAO IMEDIATA
+bubble sort -> (x, y) => x === y ? 0 : x > y ? 1 : -1
+KPI = Key Perfomance Indicator
+.toLocaleString("PT") -> para ter esses pontos 1.000.000
+DateFNS no lugar do MomentJS
+o esquema de pegar dois dias anteriores eh de verdade mesmo
+problema com EUA, Australia, França, Reino Unido e outros
+innerHTML para add a img
+
+JavaScript Assincrono:
+<script></script>
+<script async></script> carrega o html e o script em paralelo, para o html e processa o script
+<script defer></script> carrega o html e o script em paralelo, faz todo o hmtl e no final processa o script
+
+Desafio:
+developer roadmaps -> frontend e react
+KPIs global
+Pizza -new dados
+Barras - em pareto(do maior para o menor) com os 10 primeiros
+
+
+
+# ECMAScript
+
+A ECMA define um protocolo e o javascript a implementa.
+
+## ECMAScript 2015
+
+ES6
+
+```js
+// Numa constante classe pode-se moudar o valor de seus atributos mas sua estrutura nao pode ser mudada
+const Aluno = {
+    nome: 'Gabriel'
+}
+Aluno.nom = 'Jah_era';      //OK
+Aluno = {nome: 'Gabriel'}   //ERRO
+```
+
+template strings: `Eu sou um template string: ${message}`
+
+destructing: let [a, b] = [item, goal];
+
+swap: [a, b] = [b, a];
+
+destructing em objetos: let {a, b} = {item: 'exemplo', goal: 'do palmeiras'};
+
+conceito de DEFAULT:
+
+```js
+//ES5
+var soma = function(a, b) {
+    if(a === undefined) a=1;
+    if(b === undefined) b=1;
+    return  a+ b;
+}
+//ES6
+let soma = (a=1, b=1) => a + b;
+```
+
+REST:
+
+```js
+function(...valores) {
+    return  valores.reduce((anterior, atual) => { return anterior + atual});
+}
+```
+
+for of: arrays, maps, strings, sets -> navega nos valores
+for in: navega nas posicoes (nome de atributo ou index)
+
+## ES7
+
+ECMAScript 2016.
+operador de exponenciacao: a gente fazia assim '3,14 * num * num', agora 'Math.PI * Math.pow(num, 2)' ou ainda 'Math.PI * (num**2)'.
+.includes() para os arrays.
+
+## ES8
+
+string paddings - add ou substituir info numa determinada string:
+
+```js
+console.log('IGTI'.padStart(1)); //IGTI
+console.log('IGTI'.padStart(6)); //  IGTI
+
+console.log('IGTI'.padEnd(4)); //IGTI
+console.log('IGTI'.padEnd(7)); //IGTI  .
+
+console.log('IGTI'.padStart(6, 'D'));   //DDIGTI
+console.log('IGTI'.padStart(7, 'DAJ')); //DAIGTI
+```
+
+Object.entries(), Object.values() e Object.getOwnPropertyDescriptors():
+
+```js
+const tipoLogradouro = {
+    A: 'Area',
+    AER: 'Aeroporto'
+}
+console.log(Object.entries(tipoLogradouro));
+/*
+[
+    [ 'A', 'Area' ],
+    [ 'AER', 'Aeroporto']
+]
+*/
+console.log(Object.values(tipoLogradouro));
+/*
+[ 'Area', 'Aeroporto']
+*/
+let endereco = {logradouro: 'Brasil'};
+console.log(Object.getOwnPropertyDescriptors(endereco, 'logradouro'));
+/*
+{
+    logradouro: {
+        value: 'Brasil',
+        writable: true,
+        enumerable: true,
+        configurable: true
+    }
+}
+*/
+```
+
+trailing commas: function(a,b,c,) nao dah erro por causa dessa uma virgula.
