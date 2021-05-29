@@ -319,3 +319,120 @@ console.log(Object.getOwnPropertyDescriptors(endereco, 'logradouro'));
 ```
 
 trailing commas: function(a,b,c,) nao dah erro por causa dessa uma virgula.
+
+## ES9
+
+Promises.prototype.finally:
+
+```js
+const api = new Promise((resolve, reject) => {
+    if(Math.random() > 0.5) resolve('Sucesso');
+    resolce('Falha');
+})
+function log() {
+    console.log("chamada concluida");
+}
+
+// em vez de fazer isso:
+api
+.then(res => {
+    console.log(res);
+    log();
+})
+.catch(rej => {
+    console.error(rej);
+    log();
+});
+// fazer isso
+api
+.then(res => console.log(res))
+.catch(rej => console.error(rej))
+.finally(log());
+```
+
+## ES10
+
+String.trimStart() e String.trimEnd().
+O param do catch eh opcional.
+Array.flat() e Array.flatMap():
+
+```js
+let arr = [1,2,[3,4,[5,6]]];
+console.log(arr.flat());            //1,2,3,4,[5,6]
+console.log(arr.flat(2));           //1,2,3,4,5,6
+console.log(arr.flat(Infinity));    //faz todos os niveis
+
+let arr2 = [1,2,3,,5,6];
+console.log(arr.flat());            //1,2,3,5,6 - tira posicoes vazias
+```
+
+## ES11
+
+BigInt:
+
+```js
+console.log(Number.MAX_SAFE_INTEGER);       // tamanho de um int normal
+//modos de declarar um BigInt
+let a = 1n;
+let b = BigInt(2);
+```
+
+Promise.allSettled() - aguarda todas as promises acabarem, ele retorna mesmo as rejeitadas.
+**globalThis**: variavel global para todos os tipos de client (window no navegador, global no NodeJS).
+Optional Chaining: entity.car?.owner?.lastName; eh o ?
+Nullish coalescing operator:
+
+```js
+let test = "";
+console.log(test || "GET");       //GET
+console.log(test ?? "GET");       //
+```
+
+
+
+# Bibliotecas
+
+cleave.js - para os inputs
+sweetalert2
+howlerjs - medias
+angolia places - localizacao
+
+## Lodash
+
+npm install lodash
+
+```js
+import _ from 'lodash';
+let cars = ['Palio', 'Uno', 'Gol'];
+console.log(_.first(cars));
+console.log(_.last(cars));
+console.log(_.nth(cars, 3));    //pega o item na posicao 3
+console.log(_.nth(cars, -3));   //pega o item na posicao 3 de tras para a frente
+console.log(_.sample(cars));    //elemento aleatorio
+console.log(_.shuffle(cars));   //embaralha a array
+console.log(_.random(10));      //gerar um num aleatorio
+console.log(_.random(5, 10));   //gerar um num aleatorio entre 5 e 10
+_.times(3, () => {});           // repete uma funcao 3 vezes
+_.delay( () => {}, 150);        // atrasa a execucao da funcao
+_.isNumber(3);                  // valida o tipo da variavel
+_.isString(3);
+_.isArray(3);
+_.isObject(3);
+let numbers = [-4,3,0,1,32,-12,9];
+_.min(numbers);
+_.max(numbers);
+_.sum(numbers);
+_.curry(func);                  //para fazer o currying de uma funcao
+```
+
+## Date-fns
+
+npm install data-nfs
+
+## Chart.js
+
+npm install chart.js
+
+## Axios
+
+npm install axios
