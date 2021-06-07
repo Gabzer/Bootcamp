@@ -1,14 +1,12 @@
-import Percentage from "./Percentage";
+import PercentageItem from "./PercentageITem";
 
 export default function Investment({date, investment, percentage}) {
-  const classH3 = investment > 0 ? 'text-green-500' : investment < 0 ? 'text-red-500' : '';
-  let stringInvestment = investment.toString();
-  stringInvestment = stringInvestment.includes('-') ? stringInvestment.replace('-', '') : stringInvestment;
+  const classH3 = percentage > 0 ? 'text-green-600' : percentage < 0 ? 'text-red-500' : '';
   return (
     <div className='flex'>
-      <div className='flex-none p-1'>{date}</div>
-      <div className={`flex-grow p-1 space-x-8 ${classH3}`}>R$ {stringInvestment}</div>
-      <div className='flex-none p-1'><Percentage total={investment} percentage={percentage} /></div>
+      <div className='flex-none p-1 mr-8'>{date}</div>
+      <div className={`flex-grow p-1 space-x-8 ${classH3}`}>R$ {investment.toFixed(2)}</div>
+      <div className='flex-none p-1'><PercentageItem percentage={percentage} /></div>
     </div>
   )
 }
