@@ -64,3 +64,37 @@ A **key** em um <li> eh super importante para a renderizacao feita pelo React.
 O problema do **prop drilling**. Tecnica para resolve-lo: **Composition**.
 prop drilling - passar props desnecessarias para os childrens.
 uma das solucoes para esse problema: Composition - os componentes **containers** recebem _filhos_ atraves da prop _children_. A declaracao dos filhos ocorre no mesmo arquivo da declaracao do componente pai, evitando assim o problema do _prop drilling_.
+
+
+
+# O projeto react-flash-cards-v1
+
+Tecnica **Lifting State Up**: permite o compartilhamento de estado entre componentes 'irmaos', por exemplo. Ela consiste em 'subir' o estado para o componente 'pai' comum a todos os que precisam do valor do estado.
+
+o useEffect update o componente quando a props recebida pelo mesmo muda.
+
+
+
+# O projeto react-flash-cards-v2
+
+Integracao com o Backend.
+O backend pode ser considerado como 'estado do mundo'.
+Sincronizar dados com o useEffect.
+
+Criar um backend fake: biblioteca json-server.
+  1. na pasta onde for criar esse backend, 'yarn init -y' que cria um package.json basico;
+  2. yarn add --dev -E json-server, instala o json-server (-E instala a versao fixa);
+  3. colocar um documento .json no local;
+  4. no caso dessa aula, yarn add uuid -E;
+  5. node .\generator.js;
+  6. add no package.json isso:
+
+```
+"scripts": {
+  "server": "json-server --watch flashcards.json --port 3001"
+}
+```
+
+  7. yarn server
+
+Instalacao de react-tabs: yarn add react-tabs
