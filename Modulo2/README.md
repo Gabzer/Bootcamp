@@ -97,4 +97,61 @@ Criar um backend fake: biblioteca json-server.
 
   7. yarn server
 
-Instalacao de react-tabs: yarn add react-tabs
+Instalacao de react-tabs: yarn add react-tabs.
+
+
+
+# O projeto react-flash-cards-v3
+
+DEPLOY DE APPS
+**Glitch** - Oferece hospedagem gratuita (limitada) para o Back End. Nao exige cartao de credito. Permite upload de arquivos.
+**Netlify** - Oferece hospedagem gratuita (limitada) para o Front End. Nao exige cartao de credito. Possui um CLI (Command Line Interface) compativel com Node.js.
+
+
+
+
+# Aula Interativa Modulo 2
+
+comparar strings: stringA.localeCompare(stringB)
+
+
+
+# O projeto react-flash-cards-v3 - continuacao
+
+
+## Glitch
+
+No glitch, acessar o Terminal e :
+npm install json-server --save-exact
+
+Depois, no terminal, para atualizar a pagina:
+refresh
+
+-> new File -> Upload File -> generator.js
+
+Instalar o uuid:
+npm install uuid --save-exact
+
+e por fim:
+node generator.js
+
+## Netlify
+
+Preparacao: em local rodar o comando:
+yarn prod:local
+
+Instalar no PC:
+npm i -g netlify-cli@3.29.14
+
+netlify login
+
+Depois lancar:
+yarn prod:cloud
+
+A url vai ser disponibilizada no terminal.
+
+## Mensagens amigaveis
+
+yarn add react-toastify
+
+process.env.NODE_ENV - variavel para saber se eh prod ou dev (no NodeJS).
