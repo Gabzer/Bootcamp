@@ -30,7 +30,9 @@ export default function Container({
           </h4>
         </div>
 
-        {content}
+        <div className="flex flex-row flex-wrap items-center justify-center">
+          {content}
+        </div>
       </div>
     </>
   );

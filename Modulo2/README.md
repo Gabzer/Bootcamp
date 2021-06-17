@@ -155,3 +155,11 @@ A url vai ser disponibilizada no terminal.
 yarn add react-toastify
 
 process.env.NODE_ENV - variavel para saber se eh prod ou dev (no NodeJS).
+
+
+
+
+# Aula Interativa 2 - Modulo 2
+
+calculo do percentual: (item.votes / city.presence) * 100
+flex-grow

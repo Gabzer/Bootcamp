@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Candidate from '../components/Candidate';
 import Container from '../components/Container';
 
 import Header from '../components/Header';
@@ -75,7 +76,12 @@ export default function ElectionsPage() {
       listOfCandidatesBySelectedElection
     );
 
-    setSelectedCity(selecCity[0]);
+    setSelectedCity({
+      ...selecCity[0],
+      candidates: listOfCandidatesBySelectedElection,
+      candidatesQuantity: listOfCandidatesBySelectedElection.length,
+    });
+    // .toFixed(2) para duas casas decimais
   }
 
   return (
@@ -89,8 +95,22 @@ export default function ElectionsPage() {
           totalVoters={selectedCity.votingPopulation}
           abstention={selectedCity.absence}
           presence={selectedCity.presence}
-          candidates={1}
-        ></Container>
+          candidates={selectedCity.candidatesQuantity}
+        >
+          {selectedCity.candidates &&
+            selectedCity.candidates.map((candidate, index) => {
+              console.log(candidate);
+              return (
+                <Candidate
+                  isFirst={index === 0}
+                  name={candidate.name}
+                  username={candidate.username}
+                  percentage={candidate.percentage}
+                  totalVotes={candidate.votes}
+                />
+              );
+            })}
+        </Container>
       </Main>
     </>
   );
