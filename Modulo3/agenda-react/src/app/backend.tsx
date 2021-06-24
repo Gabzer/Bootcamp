@@ -20,18 +20,17 @@ export interface IUser {
   name: string;
   email: string;
 }
+
 export function getCalendarsEndpoint(): Promise<ICalendar[]> {
-  return fetch("http://localhost:8080/calendars").then((resp) => {
-    return resp.json();
-  });
+  return fetch("http://localhost:8080/calendars", {
+    credentials: "include",
+  }).then(handleResponse);
 }
 
 export function getEventsEndpoint(from: string, to: string): Promise<IEvent[]> {
-  return fetch(`http://localhost:8080/events?date_gte=${from}&date_lte=${to}&_sort=date,time`).then(
-    (resp) => {
-      return resp.json();
-    }
-  );
+  return fetch(`http://localhost:8080/events?date_gte=${from}&date_lte=${to}&_sort=date,time`, {
+    credentials: "include",
+  }).then(handleResponse);
 }
 
 export function createEventEndpoint(event: IEditingEvent): Promise<IEvent> {
@@ -44,18 +43,6 @@ export function createEventEndpoint(event: IEditingEvent): Promise<IEvent> {
     body: JSON.stringify(event),
   }).then(handleResponse);
 }
-
-// export function getCalendarsEndpoint(): Promise<ICalendar[]> {
-//   return fetch("http://localhost:8080/calendars", {
-//     credentials: "include",
-//   }).then(handleResponse);
-// }
-
-// export function getEventsEndpoint(from: string, to: string): Promise<IEvent[]> {
-//   return fetch(`http://localhost:8080/events?date_gte=${from}&date_lte=${to}&_sort=date,time`, {
-//     credentials: "include",
-//   }).then(handleResponse);
-// }
 
 export function updateEventEndpoint(event: IEditingEvent): Promise<IEvent> {
   return fetch(`http://localhost:8080/events/${event.id}`, {

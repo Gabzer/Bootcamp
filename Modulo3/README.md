@@ -58,4 +58,10 @@ Podemos ainda usar o hook **useHistory** para obter informacoes sobre a rota ou 
 Retorna um objeto que armazena um valor. Este objeto persiste durante toda a vida do componente.
 Mas o componente **nao eh renderizado** ao mudar o valor!
 
-_faltam soh dois videos_
+
+
+# Primeira aula interativa
+
+```ts
+let valorTotal = despesas.reduce((total, despesa) => total + despesa.valor, 0); // o zero eh o valor inicial do total
+```
