@@ -65,3 +65,72 @@ Mas o componente **nao eh renderizado** ao mudar o valor!
 ```ts
 let valorTotal = despesas.reduce((total, despesa) => total + despesa.valor, 0); // o zero eh o valor inicial do total
 ```
+
+
+
+# Autenticacao
+
+GET /auth/user - Obtém info do user logado se houver sessao, caso contrario retorna erro 401;
+POST /auth/login - Verifica email/senha e cria uma sessao no BackEnd. O id da sessao eh armazenado em um cookie HttpOnly (nao permete javascript injection, nao pode ser lido pelo javascript);
+POST /auth/logout - destroi a sessao no Back End.
+
+
+
+# A API Context
+
+Objetivo dessa API: compartilhar info entre componentes sem preciser repassah-los via props explicitamente.
+
+```ts
+React.createContext<T>({default_value});
+```
+
+E no componente pai:
+
+```ts
+<userContext.Provider value={sameType_default_value}>
+...
+</userContext.Provider>
+```
+
+
+
+# Otimizacao de aplicacoes
+
+useMemo, useCallback e React.memo
+OBS.: um jeito legal de analisar os componentes React, eh soh instalar o React Dev Tools, ir na aba 'Components', clicar na engrenagem e marcar a box 'Highlight updates when components render.'
+
+Comprendendo a renderizacao de componenetes no React:
+1. a renderizacao consiste em gerar o virtual DOM, comparah-lo com o DOM, e aplicar as mudancas necessarias;
+2. por padrao, toda vez que ocorre qualquer mudanca de estado em um componenete ele eh renderizado novamente, **assim como toda a subarvore abaixo dele**;
+3. normalmente isso nao eh um problema pois a renderizacao eh rapida, mas podemos ter problemas de performance com componentes muito grandes.
+
+O que podemos fazer ?
+1. **useMemo**: hook que computa um valor apenas quando houver modificacoes em suas dependencias;
+2. **React.memo**: funcao que, dado um componente, retorna uma versao otimizada do mesmo que soh renderiza quando algum prop recebido for alterado.
+
+o **useCallback** eh igual ao useMemo mas especifico para funcoes.
+
+
+
+# useReducer
+
+Serve para controlar estado mais complicado, com um nivel de controle e abstracao maior.
+**useReducer** eh uma alternativa ao _useState_ quando temos transicoes de estado mais complexas e desejamos maior controle.
+
+
+
+# Hooks customizados
+
+Criar hooks para modularizar melhor a app.
+Hooks customizados podem chamar outros hooks mas nao se pode colocar uma chamada de um hook dentro de uma condicao.
+Com eles podemos reutilizar codigo e modularizar a app.
+
+
+
+# Class components
+
+Antes do React 16.8, a unica forma de definir componentes contendo estado era por meio de classes.
+O estado do componente eh armazenado na propriedade **state**, e atualizado via **setState**.
+A exibicao do componente eh implementada no metodo **render**.
+Ciclo de vida do componente: apenas class components podiam interagir com o ciclo de vida de componentes, sobrescrevendo os metodos _componentDidMount()_, _componentWillUnmount()_ e _componentDidUpdate(prevProps, prevState)_.
+Nao precisamos usar Class Components em componentes novos, mas eh importante conhece-los para entender o codigo legado.

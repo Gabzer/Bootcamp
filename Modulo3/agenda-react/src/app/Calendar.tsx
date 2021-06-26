@@ -1,3 +1,5 @@
+import React from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Icon from "@material-ui/core/Icon";
@@ -9,6 +11,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 import { ICalendar, IEvent } from "./backend";
+import { getToday } from "./dateFunctions";
+import { ICalendarScreenAction } from "./calendarScreenReducer";
 
 const DAYS_OF_WEEK = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
 
@@ -27,8 +31,16 @@ const useStyles = makeStyles({
     },
   },
   dayOfMonth: {
+    display: "inline-block",
     fontWeight: 500,
+    width: "24px",
+    lineHeight: "24px",
     marginBottom: "4px",
+    borderRadius: "50%",
+    "&.today": {
+      backgroundColor: "#3f51b5",
+      color: "white",
+    },
   },
   event: {
     display: "flex",
@@ -58,17 +70,16 @@ export interface ICalendarCell {
 
 interface ICalendarProps {
   weeks: ICalendarCell[][];
-  onClickDay: (date: string) => void;
-  onClickEvent: (event: IEvent) => void;
+  dispatch: React.Dispatch<ICalendarScreenAction>;
 }
 
-export function Calendar(props: ICalendarProps) {
-  const { weeks } = props;
+export const Calendar = React.memo(function (props: ICalendarProps) {
+  const { weeks, dispatch } = props;
   const classes = useStyles();
 
   function handleClick(evt: React.MouseEvent, date: string) {
     if (evt.target === evt.currentTarget) {
-      props.onClickDay(date);
+      dispatch({ type: "new", payload: date });
     }
   }
 
@@ -93,7 +104,9 @@ export function Calendar(props: ICalendarProps) {
                   key={cell.date}
                   onClick={(me) => handleClick(me, cell.date)}
                 >
-                  <div className={classes.dayOfMonth}>{cell.dayOfMonth}</div>
+                  <div className={classes.dayOfMonth + (cell.date === getToday() ? " today" : "")}>
+                    {cell.dayOfMonth}
+                  </div>
 
                   {cell.events.map((event) => {
                     const color = event.calendar.color;
@@ -101,7 +114,7 @@ export function Calendar(props: ICalendarProps) {
                       <button
                         key={event.id}
                         className={classes.event}
-                        onClick={() => props.onClickEvent(event)}
+                        onClick={() => dispatch({ type: "edit", payload: event })}
                       >
                         {event.time && (
                           <>
@@ -134,4 +147,4 @@ export function Calendar(props: ICalendarProps) {
       </Table>
     </TableContainer>
   );
-}
+});

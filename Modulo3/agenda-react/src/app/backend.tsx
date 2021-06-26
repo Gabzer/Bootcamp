@@ -62,29 +62,29 @@ export function deleteEventEndpoint(eventId: number): Promise<void> {
   }).then(handleResponse);
 }
 
-// export function getUserEndpoint(): Promise<IUser> {
-//   return fetch(`http://localhost:8080/auth/user`, {
-//     credentials: "include",
-//   }).then(handleResponse);
-// }
+export function getUserEndpoint(): Promise<IUser> {
+  return fetch(`http://localhost:8080/auth/user`, {
+    credentials: "include",
+  }).then(handleResponse);
+}
 
-// export function signInEndpoint(email: string, password: string): Promise<IUser> {
-//   return fetch(`http://localhost:8080/auth/login`, {
-//     credentials: "include",
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ email, password }),
-//   }).then(handleResponse);
-// }
+export function signInEndpoint(email: string, password: string): Promise<IUser> {
+  return fetch(`http://localhost:8080/auth/login`, {
+    credentials: "include",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  }).then(handleResponse);
+}
 
-// export function signOutEndpoint(): Promise<IUser> {
-//   return fetch(`http://localhost:8080/auth/logout`, {
-//     credentials: "include",
-//     method: "POST",
-//   }).then(handleResponse);
-// }
+export function signOutEndpoint(): Promise<IUser> {
+  return fetch(`http://localhost:8080/auth/logout`, {
+    credentials: "include",
+    method: "POST",
+  }).then(handleResponse);
+}
 
 function handleResponse(resp: Response) {
   if (resp.ok) {
