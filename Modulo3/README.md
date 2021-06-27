@@ -134,3 +134,19 @@ O estado do componente eh armazenado na propriedade **state**, e atualizado via 
 A exibicao do componente eh implementada no metodo **render**.
 Ciclo de vida do componente: apenas class components podiam interagir com o ciclo de vida de componentes, sobrescrevendo os metodos _componentDidMount()_, _componentWillUnmount()_ e _componentDidUpdate(prevProps, prevState)_.
 Nao precisamos usar Class Components em componentes novos, mas eh importante conhece-los para entender o codigo legado.
+
+
+
+# Redux
+
+Nos ajuda a genreciar o estado de nossa app com facilidade maior de a evoluir.
+A arquitetura redux:
+1. O estado global da app eh cnetralizado no **store**. Existe uma _unica fonte da verdade_.
+2. O estado eh imutavel. A unica forma de altera-lo eh emitindo uma _action_, um objeto que representa uma acao.
+3. Dado o estado atual e uma _action_, um novo estado eh calculado pela funcao _reducer_. Tal funcao nao possui nenhum tipo de efeito colateral.
+
+```bash
+npm install --save @reduxjs/toolkit react-redux
+```
+
+A ferramenta Redux DevTools ajuda a observar o redux.
