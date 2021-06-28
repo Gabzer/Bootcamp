@@ -25,7 +25,7 @@ interface ILoginScreenProps {
 export default function LoginScreen(props: ILoginScreenProps) {
   const classes = useStyles();
 
-  const [email, setEmail] = useState("danilo@email.com");
+  const [email, setEmail] = useState("usuario@email.com");
   const [password, setPassword] = useState("1234");
   const [error, setError] = useState("");
 
@@ -42,7 +42,7 @@ export default function LoginScreen(props: ILoginScreenProps) {
       <h1>Agenda React</h1>
       <p>
         Digite e-mail e senha para entrar no sistema. Para testar, use o e-mail{" "}
-        <kbd>danilo@email.com</kbd> e a senha <kbd>1234</kbd>.
+        <kbd>usuario@email.com</kbd> e a senha <kbd>1234</kbd>.
       </p>
       <form onSubmit={signIn}>
         <TextField

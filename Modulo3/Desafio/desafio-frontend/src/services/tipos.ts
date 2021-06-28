@@ -11,3 +11,8 @@ export interface IUser {
   nome: string;
   email: string;
 }
+
+export interface ICategories {
+  nome: string;
+  valorTotal: number;
+}

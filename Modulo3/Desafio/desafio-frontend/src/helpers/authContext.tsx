@@ -4,7 +4,7 @@ import { IUser } from "../services/tipos";
 
 export interface IAuthContext {
   user: IUser;
-  // onSignOut: () => void;
+  onSignOut: () => void;
 }
 
 export const authContext = React.createContext<IAuthContext>({
@@ -12,7 +12,7 @@ export const authContext = React.createContext<IAuthContext>({
     nome: "Anônimo",
     email: "",
   },
-  // onSignOut: () => {},
+  onSignOut: () => {},
 });
 
 export function useAuthContext() {
