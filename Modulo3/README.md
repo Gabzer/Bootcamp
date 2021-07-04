@@ -150,3 +150,9 @@ npm install --save @reduxjs/toolkit react-redux
 ```
 
 A ferramenta Redux DevTools ajuda a observar o redux.
+
+
+
+# Segunda aula interativa
+
+olhar a function q o prof criou calculaResumo() e TelaDespesas.tsx
