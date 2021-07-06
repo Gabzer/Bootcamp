@@ -30,7 +30,7 @@ Duas tecnicas para buscar info do BD:
 1. **Pulling**: de tempos em tempos, esse tempo eh programado, o cliente vai e pede para o BD "executa a mesma query e deixa eu ver os results";
 2. **Websocket**: olha BD, eu tenho interesse nessa info, ai sempre q ela modificar ele me avisa.
 
-Mass isso naop funcionaria bem num caso como o sitado logo em cima.
+Mas isso nao funcionaria bem num caso como o sitado logo em cima.
 Tradeoff dados novos vs Acessos a API: eis a questao.
 
 Estado do servidor: eh aquele mostrado para o cliente.
@@ -96,3 +96,14 @@ BDD - Behavior Driven Development:
 3. Por outro lado, todos os comportamentos precisam ser testados.
 
 Ferramentas: React Testing Library, Jest, Cypress.
+
+## Na pratica
+
+Ajuda a ver o componente renderizado:
+
+```js
+render(<InputNumerico />);
+screen.debug();
+```
+
+https://nextjs.org/docs/upgrading
