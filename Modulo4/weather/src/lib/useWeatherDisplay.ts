@@ -6,7 +6,7 @@ import { weatherQuery } from '../api/queries';
 
 import { checkedCityAtom } from '../global';
 
-const MY_API_KEY = 'aa5a52001c1aabadb42b8ce1828f9fff';
+const MY_API_KEY = '';
 
 export default function useWeatherDisplay() {
   const [cityChecked] = useAtom(checkedCityAtom);
