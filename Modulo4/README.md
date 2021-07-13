@@ -107,3 +107,12 @@ screen.debug();
 ```
 
 https://nextjs.org/docs/upgrading
+
+# Introducao ao NextJS
+
+Cria um Server Side Rendering.
+
+```bash
+npx create-next-app ecommerce
+npm run dev
+```
