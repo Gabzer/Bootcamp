@@ -60,6 +60,7 @@ npm i react-icons
 Fazer teste para nao deixar seu codigo legado.
 
 Tipos de testes:
+
 1. Units Tests - testa o atomo;
 2. Testes de integracao - testa a integracao de componentes;
 3. Testes end to end - mock dos dados falsos da Api ate o atomo;
@@ -69,28 +70,31 @@ Tipos de testes:
 7. Testes de usabilidade - ver se ficou facil de entender a usabilidade dos componentes da tela.
 
 Piramide de testes:
-           ^
-         /   \
-        / E2E \
-       /-------\
-      /         \
-     /           \
-    / Integration \
-   /---------------\
-  /       Unit      \
+^
+/ \
+ / E2E \
+ /-------\
+ / \
+ / \
+ / Integration \
+ /---------------\
+ / Unit \
  /-------------------\
 
 Boas praticas:
+
 1. Teste o comportamento e nao a implementacao;
 2. Codigo de teste deve ser simples. Ninguem testa codigos de teste;
 3. Testes devem ser repetidos.
 
 TDD - Test Driven Development:
+
 1. Forma de desenvolvimento;
 2. Ajuda a pensar no que realmente importa;
 3. Tambem chamado de teste RED/GREEN.
 
 BDD - Behavior Driven Development:
+
 1. O que realemente importa sao comportamentos;
 2. Nem toda linha de codigo precisa ser testada;
 3. Por outro lado, todos os comportamentos precisam ser testados.
@@ -115,4 +119,15 @@ Cria um Server Side Rendering.
 ```bash
 npx create-next-app ecommerce
 npm run dev
+```
+
+# Cypress
+
+Teste E2E.
+Testa a pagina toda.
+
+```bash
+npm i cypress --save-dev
+npx cypress open
+node_modules/.bin/cypress open
 ```
